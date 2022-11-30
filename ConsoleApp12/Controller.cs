@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ConsoleApp12
@@ -33,6 +34,22 @@ namespace ConsoleApp12
             }
 
             return text;
+        }
+
+        public void SaveList()
+        {
+            var json = JsonSerializer.Serialize<List<Good>>(Goods);
+
+            File.WriteAllText("db.json", json);
+        }
+        public void OpenList()
+        {
+            if (!File.Exists("db.json"))
+                return;
+
+            var json = File.ReadAllText("db.json");
+
+            Goods = JsonSerializer.Deserialize<List<Good>>(json);
         }
     }
 }

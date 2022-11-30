@@ -25,6 +25,13 @@ internal class Program
                     Console.WriteLine(s.GetGoods());
                     break;
 
+                case "сохранить":
+                    s.SaveList();
+                    break;
+                case "открыть":
+                    s.OpenList();
+                    break;
+
                 default:
                     WriteLine("Ошибка в комане");
                     break;
